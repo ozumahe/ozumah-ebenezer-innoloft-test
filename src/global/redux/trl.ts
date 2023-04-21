@@ -21,7 +21,7 @@ export const trl = createSlice({
   name: "Trl",
   initialState: initialState,
   reducers: {
-    setProduct: (state, action: PayloadAction<TrlType[]>) => {
+    setTrlList: (state, action: PayloadAction<TrlType[]>) => {
       state.trlList.data = action.payload;
     },
   },
@@ -43,6 +43,6 @@ export const trl = createSlice({
   },
 });
 
-export const { setProduct } = trl.actions;
+export const { setTrlList } = trl.actions;
 
 export default trl.reducer;

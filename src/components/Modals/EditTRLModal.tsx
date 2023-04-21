@@ -1,13 +1,33 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../global/store";
+import { editProduct } from "../../services/product";
+import { setProduct } from "../../global/redux/product";
 
 type Props = {
   trlmodalRef: any;
+  setIsRequest: any;
 };
 
-const EditTRLModal: FC<Props> = ({ trlmodalRef }: Props) => {
+const EditTRLModal: FC<Props> = ({ trlmodalRef, setIsRequest }: Props) => {
   const { trlList } = useSelector((state: RootState) => state.trl);
+  const dispatch = useDispatch();
+
+  const handleSelect = async (data: { id: number; name: string }) => {
+    setIsRequest(true);
+    try {
+      const resData: any = await editProduct({ trl: data });
+      if (resData) {
+        setIsRequest(false);
+        closeModal();
+        dispatch(setProduct(resData));
+      }
+    } catch (e) {}
+  };
+
+  const closeModal = () => {
+    trlmodalRef.current.click();
+  };
 
   return (
     <div>
@@ -19,7 +39,7 @@ const EditTRLModal: FC<Props> = ({ trlmodalRef }: Props) => {
               Select TRL
             </p>
             <div
-              onClick={() => trlmodalRef.current.click()}
+              onClick={closeModal}
               className="h-[30px] cursor-pointer rounded-md bg-primaryColor flex justify-center items-center text-[14px] font-normal text-[#FFFFFF] px-[10px]"
             >
               <p>Cancel</p>
@@ -29,7 +49,7 @@ const EditTRLModal: FC<Props> = ({ trlmodalRef }: Props) => {
             {trlList.data.map(({ id, name }) => (
               <div
                 key={id}
-                onClick={() => {}}
+                onClick={() => handleSelect({ id, name })}
                 className="min-h-[50px] mt-[10px] cursor-pointer lg:mt-[20px] bg-[#E5E7EB] rounded-[8px] text-[14px] font-normal text-[#6B7280] py-[5px] px-[14px]"
               >
                 {name}

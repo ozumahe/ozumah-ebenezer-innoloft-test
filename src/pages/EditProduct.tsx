@@ -1,5 +1,10 @@
 import React, { FC, useEffect } from "react";
-import { DetailsSection } from "../components/EditProduct";
+import {
+  BreadCrumb,
+  DetailsSection,
+  MainSection,
+  VideoSection,
+} from "../components/EditProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../global/store";
 import { getProduct } from "../global/redux/product";
@@ -18,7 +23,10 @@ const EditProduct: FC = () => {
 
   return (
     <div className="px-[10px]">
-      <DetailsSection data={product.data} />;
+      <BreadCrumb />
+      <MainSection data={product.data} />
+      <VideoSection />
+      <DetailsSection data={product.data} />
     </div>
   );
 };

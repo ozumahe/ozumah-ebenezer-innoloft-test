@@ -53,17 +53,18 @@ const DetailsSection: FC<Props> = ({
             <p className="text-[16px] text-[#6B7280] font-normal">TRL</p>
           </div>
 
-          <div className="mt-[10px] lg:mt-[20px] bg-[#E5E7EB] rounded-[20px] text-[14px] font-normal flex justify-center items-center text-[#6B7280] py-[5px] px-[14px]">
+          <div className="ml-[35px] mt-[10px] lg:mt-[20px] bg-[#E5E7EB] rounded-[20px] text-[14px] font-normal flex justify-center items-center text-[#6B7280] py-[5px] px-[14px]">
             {trl.name}
           </div>
         </div>
+
         <div>
           <div className="flex items-center gap-2">
             <img src="/icons/inno_investor.svg" alt="icon" />
             <p className="text-[16px] text-[#6B7280] font-normal">Costs</p>
           </div>
 
-          <div className="mt-[10px] lg:mt-[20px] w-fit bg-[#E5E7EB] rounded-[20px] text-[14px] font-normal flex justify-center items-center text-[#6B7280] py-[5px] px-[14px]">
+          <div className="ml-[35px] mt-[10px] lg:mt-[20px] w-fit bg-[#E5E7EB] rounded-[20px] text-[14px] font-normal flex justify-center items-center text-[#6B7280] py-[5px] px-[14px]">
             {investmentEffort}
           </div>
         </div>

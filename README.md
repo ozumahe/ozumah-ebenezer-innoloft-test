@@ -10,15 +10,25 @@
 ## `Code Structure : Clean Architecture`
 
 ```
+.
 ├── public
+│   ├── icons
 │   └── imgs
 └── src
-├── components
-│   ├── Layout
-│   └── Main
-├── global
-│   └── redux
-├── pages
-└── services
+    ├── components
+    │   ├── EditProduct
+    │   │   └── DetailsSection
+    │   ├── Layout
+    │   ├── Modals
+    │   └── ProductView
+    │       ├── BreadCrumb
+    │       ├── DetailsSection
+    │       ├── MainSection
+    │       └── VideoSection
+    ├── global
+    │   └── redux
+    ├── pages
+    ├── services
+    └── utils
 
 ```
