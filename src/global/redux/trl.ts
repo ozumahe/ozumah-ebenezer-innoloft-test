@@ -13,6 +13,7 @@ const initialState: InitialState = {
   },
 };
 
+// GET TRL LIST
 export const getTrlList: any = createAsyncThunk("trlList/get", () => {
   return TRLService.getTrlList();
 });

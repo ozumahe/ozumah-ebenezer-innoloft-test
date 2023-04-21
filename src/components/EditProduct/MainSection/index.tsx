@@ -1,5 +1,9 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { ProductType } from "../../../utils/types";
+import { debounce } from "../../../utils/helpers";
+import { editProduct } from "../../../services/product";
+import { useDispatch } from "react-redux";
+import { setProduct } from "../../../global/redux/product";
 
 type Props = {
   data: ProductType;
@@ -8,6 +12,29 @@ type Props = {
 const MainSection: FC<Props> = ({
   data: { type, picture, description, company, user, name },
 }: Props) => {
+  const [typeName, setTypeName] = useState<string>("");
+
+  const dispatch = useDispatch();
+
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTypeName(e.target.value);
+    debounce(updateTypeName, 2000);
+  };
+
+  const updateTypeName = async () => {
+    try {
+      const resData: any = await editProduct({ type: typeName });
+      if (resData) {
+        dispatch(setProduct(resData));
+      }
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    setTypeName(name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="lg:flex w-full min-h-[520px] bg-[#FFF] rounded-[6px] border-[1px] border-[#E5E7EB] overflow-hidden">
       {/* LEFT  */}
@@ -23,6 +50,10 @@ const MainSection: FC<Props> = ({
               </p>
             </div>
           </div>
+
+          <div className="absolute top-0 right-0 z-10 w-[40px] h-[40px] bg-[#FFF] rounded-bl-[6px] flex justify-center items-center">
+            <img src="/icons/inno_delete.svg" alt="icon" />
+          </div>
           <div className="absolute top-0 left-0 right-0 bottom-0">
             <img
               src={picture}
@@ -32,7 +63,12 @@ const MainSection: FC<Props> = ({
           </div>
         </div>
         <div className="p-[20px]">
-          <p className="text-[16px] font-semibold text-[#374151]">{name}</p>
+          <input
+            type="text"
+            value={typeName}
+            onChange={handleChange}
+            className="w-full h-[38px] px-[10px] border-[#D1D5DB] border-[1px] outline-none rounded-md text-[16px] font-semibold text-[#374151]"
+          />
           <p className="text-[14px] font-normal text-[#6B7280] leading-[24px] mt-[15px]">
             {description}
           </p>

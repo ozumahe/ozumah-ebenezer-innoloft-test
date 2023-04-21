@@ -44,7 +44,7 @@ const initialState: InitialState = {
     },
   },
 };
-
+// GET PRODUCT
 export const getProduct: any = createAsyncThunk("product/get", () => {
   return ProductService.getProduct();
 });
