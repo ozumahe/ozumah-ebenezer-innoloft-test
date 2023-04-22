@@ -16,23 +16,23 @@ const Header: FC = () => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 border-[2px] border-primaryColor"
           >
             <li>
-              <a href="/" className="focus:bg-primaryColor">
+              <a href="/" className="focus:bg-primaryColor/10">
                 <div className="flex gap-[20px] cursor-pointer">
                   <img src="/icons/home.svg" alt="icon" />
-                  <p className="flex items-center text-[14px] text-[#6B7280] font-normal">
+                  <p className="flex items-center text-[14px] text-[#6B7280] font-semibold">
                     Main
                   </p>
                 </div>
               </a>
             </li>
             <li>
-              <a href="/product" className="focus:bg-primaryColor">
+              <a href="/product" className="focus:bg-primaryColor/10">
                 <div className="flex gap-[20px] cursor-pointer">
                   <img src="/icons/home.svg" alt="icon" />
-                  <p className="flex items-center text-[14px] text-[#6B7280] font-normal">
+                  <p className="flex items-center text-[14px] text-[#6B7280] font-semibold">
                     Product
                   </p>
                 </div>
