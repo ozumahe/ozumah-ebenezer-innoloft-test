@@ -33,3 +33,10 @@ export type ProductType = {
 };
 
 export type TrlType = { id: number; name: string };
+
+export type ConfigType = {
+  id: number;
+  logo: string;
+  mainColor: string;
+  hasUserSection: boolean;
+};

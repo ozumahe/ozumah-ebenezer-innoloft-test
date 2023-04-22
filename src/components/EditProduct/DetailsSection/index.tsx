@@ -1,7 +1,12 @@
 import { FC, useRef, useState } from "react";
 import { ProductType } from "../../../utils/types";
 import { EditTRLDropdown } from "../../Dropdown";
-import { EditTechnologyModal } from "../../Modals";
+import {
+  AddBuisnessModelModal,
+  AddTechnologyModal,
+  EditTechnologyModal,
+} from "../../Modals";
+import EditBusinessModelsModal from "../../Modals/EditBusinessModelsModal";
 
 type Props = {
   data: ProductType;
@@ -11,6 +16,15 @@ const DetailsSection: FC<Props> = ({
   data: { categories, businessModels, trl, investmentEffort },
 }: Props) => {
   const editTechRef: any = useRef();
+  const bmRef: any = useRef();
+  const addTechRef: any = useRef();
+  const addBmRef: any = useRef();
+
+  const [modelToEdit, setModelToEdit] = useState<{ id: number; name: string }>({
+    id: 0,
+    name: "",
+  });
+
   const [techToEdit, setTechToEdit] = useState<{ id: number; name: string }>({
     id: 0,
     name: "",
@@ -20,6 +34,16 @@ const DetailsSection: FC<Props> = ({
     setTechToEdit({ id, name });
   };
 
+  const handleEditBuisnessModell = ({
+    id,
+    name,
+  }: {
+    id: number;
+    name: string;
+  }) => {
+    bmRef.current.click();
+    setModelToEdit({ id, name });
+  };
   return (
     <>
       <div className="w-full bg-[#FFF] rounded-[6px] border-[1px] border-[#E5E7EB] mt-[30px] py-[30px] px-[10px] lg:px-[20px]">
@@ -49,7 +73,10 @@ const DetailsSection: FC<Props> = ({
                   </div>
                 </div>
               ))}
-              <div className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]">
+              <div
+                onClick={() => addTechRef.current.click()}
+                className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]"
+              >
                 {"Add"}
                 <div className="w-[30px] h-[30px] flex justify-center items-center ml-[10px] cursor-pointer border-[#FFF] border-[2px] rounded-full">
                   +
@@ -72,12 +99,18 @@ const DetailsSection: FC<Props> = ({
                   className="bg-[#E5E7EB] rounded-[20px] text-[14px] font-normal flex justify-center items-center text-[#6B7280] py-[5px] px-[14px]"
                 >
                   {name}
-                  <div className="p-[8px] mx-[10px] cursor-pointer border-primaryColor border-[2px] rounded-full">
+                  <div
+                    onClick={() => handleEditBuisnessModell({ id, name })}
+                    className="p-[8px] mx-[10px] cursor-pointer border-primaryColor border-[2px] rounded-full"
+                  >
                     <img src="/icons/edit-icon.svg" alt="icon" />
                   </div>
                 </div>
               ))}
-              <div className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]">
+              <div
+                onClick={() => addBmRef.current.click()}
+                className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]"
+              >
                 {"Add"}
                 <div className="w-[30px] h-[30px] flex justify-center items-center ml-[10px] cursor-pointer border-[#FFF] border-[2px] rounded-full">
                   +
@@ -111,6 +144,13 @@ const DetailsSection: FC<Props> = ({
         techToEdit={techToEdit}
         setTechToEdit={setTechToEdit}
       />
+      <EditBusinessModelsModal
+        editRef={bmRef}
+        modelToEdit={modelToEdit}
+        setModelToEdit={setModelToEdit}
+      />
+      <AddTechnologyModal addTechRef={addTechRef} />
+      <AddBuisnessModelModal addBmRef={addBmRef} />
     </>
   );
 };
