@@ -6,11 +6,11 @@
 - React.js
 - Redux
 - Tailwind CSS
+- Yarn ( Package Manager )
 
 ## `Code Structure : Clean Architecture`
 
 ```
-.
 ├── public
 │   ├── icons
 │   └── imgs
@@ -30,9 +30,11 @@
     │       ├── MainSection
     │       └── VideoSection
     ├── global
-    │   └── redux
+    │   ├── redux
+    │   └── store
     ├── pages
     ├── services
     └── utils
+
 
 ```
