@@ -19,7 +19,7 @@ const Header: FC = () => {
             className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="/">
+              <a href="/" className="focus:bg-primaryColor">
                 <div className="flex gap-[20px] cursor-pointer">
                   <img src="/icons/home.svg" alt="icon" />
                   <p className="flex items-center text-[14px] text-[#6B7280] font-normal">
@@ -29,7 +29,7 @@ const Header: FC = () => {
               </a>
             </li>
             <li>
-              <a href="/product">
+              <a href="/product" className="focus:bg-primaryColor">
                 <div className="flex gap-[20px] cursor-pointer">
                   <img src="/icons/home.svg" alt="icon" />
                   <p className="flex items-center text-[14px] text-[#6B7280] font-normal">
