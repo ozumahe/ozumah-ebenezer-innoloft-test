@@ -32,8 +32,7 @@ const MainSection: FC<Props> = ({
 
   useEffect(() => {
     setTypeName(name);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [name]);
 
   return (
     <div className="lg:flex w-full min-h-[520px] bg-[#FFF] rounded-[6px] border-[1px] border-[#E5E7EB] overflow-hidden">

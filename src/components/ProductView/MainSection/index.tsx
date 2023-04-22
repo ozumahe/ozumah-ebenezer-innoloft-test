@@ -42,7 +42,7 @@ const MainSection: FC<Props> = ({
       <div className="w-full lg:w-[30%] p-[20px]">
         <p className="font-semibold text-[16px] text-[#374151]">Offered By</p>
 
-        <img src={company.logo} alt="logo" className="mt-[20px]" />
+        <img src={company.logo} alt="logo" className="mt-[20px] w-[200px]" />
         <div className="flex items-center gap-3 mt-[30px]">
           <img
             src={user.profilePicture}
