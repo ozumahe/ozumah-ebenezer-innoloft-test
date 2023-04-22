@@ -16,8 +16,12 @@
 │   └── imgs
 └── src
     ├── components
+    │   ├── Dropdown
     │   ├── EditProduct
-    │   │   └── DetailsSection
+    │   │   ├── BreadCrumb
+    │   │   ├── DetailsSection
+    │   │   ├── MainSection
+    │   │   └── VideoSection
     │   ├── Layout
     │   ├── Modals
     │   └── ProductView
