@@ -47,11 +47,14 @@ const DetailsSection: FC<Props> = ({
                   >
                     <img src="/icons/edit-icon.svg" alt="icon" />
                   </div>
-                  <div className="p-[8px] mx-[10px] cursor-pointer border-primaryColor border-[2px] rounded-full">
-                    <img src="/icons/inno_delete.svg" alt="icon" />
-                  </div>
                 </div>
               ))}
+              <div className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]">
+                {"Add"}
+                <div className="w-[30px] h-[30px] flex justify-center items-center ml-[10px] cursor-pointer border-[#FFF] border-[2px] rounded-full">
+                  +
+                </div>
+              </div>
             </div>
           </div>
 
@@ -72,11 +75,14 @@ const DetailsSection: FC<Props> = ({
                   <div className="p-[8px] mx-[10px] cursor-pointer border-primaryColor border-[2px] rounded-full">
                     <img src="/icons/edit-icon.svg" alt="icon" />
                   </div>
-                  <div className="p-[8px] mx-[10px] cursor-pointer border-primaryColor border-[2px] rounded-full">
-                    <img src="/icons/inno_delete.svg" alt="icon" />
-                  </div>
                 </div>
               ))}
+              <div className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]">
+                {"Add"}
+                <div className="w-[30px] h-[30px] flex justify-center items-center ml-[10px] cursor-pointer border-[#FFF] border-[2px] rounded-full">
+                  +
+                </div>
+              </div>
             </div>
           </div>
           <div>

@@ -1,4 +1,8 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { useDispatch } from "react-redux";
+import { editProduct } from "../../services/product";
+import { setProduct } from "../../global/redux/product";
+import { SpinnerCircular } from "spinners-react";
 
 type Props = {
   editTechRef: any;
@@ -11,11 +15,24 @@ const EditTechnologyModal: FC<Props> = ({
   techToEdit,
   setTechToEdit,
 }: Props) => {
+  const dispatch = useDispatch();
+  const [isRequest, setIsRequest] = useState<boolean>(false);
+
   const closeModal = () => {
     editTechRef.current.click();
   };
 
-  const handleUpdateTech = () => {};
+  const handleUpdateTech = async () => {
+    setIsRequest(true);
+    try {
+      const resData: any = await editProduct({ categories: techToEdit });
+      if (resData) {
+        dispatch(setProduct(resData));
+        setIsRequest(false);
+        closeModal();
+      }
+    } catch (e) {}
+  };
 
   return (
     <div>
@@ -45,9 +62,17 @@ const EditTechnologyModal: FC<Props> = ({
             >
               <p>Cancel</p>
             </div>
-            <button className="w-[72px] h-[30px] bg-primaryColor rounded-md flex items-center gap-1 justify-center">
+            <button
+              onClick={handleUpdateTech}
+              className="relative w-[72px] h-[30px] bg-primaryColor rounded-md flex items-center gap-1 justify-center"
+            >
               <img src="/icons/goodIcon.svg" alt="icon" />
               <p className="text-[14px] font-normal text-[#FFF]">Save</p>
+              {isRequest ? (
+                <div className="absolute top-0 left-0 right-0 bottom-0 bg-appBackgroundColor/70 flex justify-center items-center">
+                  <SpinnerCircular color="#272E71" size={30} />
+                </div>
+              ) : null}
             </button>
           </div>
           <div className="modal-action">
