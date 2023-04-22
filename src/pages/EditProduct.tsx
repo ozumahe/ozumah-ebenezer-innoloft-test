@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../global/store";
 import { getProduct } from "../global/redux/product";
 import { getTrlList } from "../global/redux/trl";
+import { SpinnerCircularFixed } from "spinners-react";
 
 const EditProduct: FC = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,14 @@ const EditProduct: FC = () => {
     dispatch(getTrlList());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (product.isLoading) {
+    return (
+      <div className="w-full h-[70vh] flex justify-center items-center">
+        <SpinnerCircularFixed color="#272E71" />
+      </div>
+    );
+  }
 
   return (
     <div className="px-[10px]">

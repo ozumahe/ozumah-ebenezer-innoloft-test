@@ -4,6 +4,8 @@ import { debounce } from "../../../utils/helpers";
 import { editProduct } from "../../../services/product";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../../../global/redux/product";
+import { Editor } from "react-draft-wysiwyg";
+import { ContentState, EditorState, convertFromHTML } from "draft-js";
 
 type Props = {
   data: ProductType;
@@ -13,8 +15,16 @@ const MainSection: FC<Props> = ({
   data: { type, picture, description, company, user, name },
 }: Props) => {
   const [typeName, setTypeName] = useState<string>("");
-
   const dispatch = useDispatch();
+  const blocksFromHTML = convertFromHTML(description);
+  const state = ContentState.createFromBlockArray(
+    blocksFromHTML.contentBlocks,
+    blocksFromHTML.entityMap
+  );
+
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createWithContent(state)
+  );
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setTypeName(e.target.value);
@@ -68,9 +78,16 @@ const MainSection: FC<Props> = ({
             onChange={handleChange}
             className="w-full h-[38px] px-[10px] border-[#D1D5DB] border-[1px] outline-none rounded-md text-[16px] font-semibold text-[#374151]"
           />
-          <p className="text-[14px] font-normal text-[#6B7280] leading-[24px] mt-[15px]">
+          {/* <p className="text-[14px] font-normal text-[#6B7280] leading-[24px] mt-[15px]">
             {description}
-          </p>
+          </p> */}
+          <Editor
+            editorState={editorState}
+            // defaultContentState={description}
+            onEditorStateChange={setEditorState}
+            wrapperClassName="wrapper"
+            editorClassName="editor"
+          />
         </div>
       </div>
       {/* RIGHT */}

@@ -75,7 +75,7 @@ const DetailsSection: FC<Props> = ({
               ))}
               <div
                 onClick={() => addTechRef.current.click()}
-                className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]"
+                className="bg-primaryColor cursor-pointer rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]"
               >
                 {"Add"}
                 <div className="w-[30px] h-[30px] flex justify-center items-center ml-[10px] cursor-pointer border-[#FFF] border-[2px] rounded-full">
@@ -109,7 +109,7 @@ const DetailsSection: FC<Props> = ({
               ))}
               <div
                 onClick={() => addBmRef.current.click()}
-                className="bg-primaryColor rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]"
+                className="bg-primaryColor cursor-pointer rounded-[20px] text-[16px] font-normal flex justify-center items-center text-[#FFF] py-[5px] px-[14px]"
               >
                 {"Add"}
                 <div className="w-[30px] h-[30px] flex justify-center items-center ml-[10px] cursor-pointer border-[#FFF] border-[2px] rounded-full">
