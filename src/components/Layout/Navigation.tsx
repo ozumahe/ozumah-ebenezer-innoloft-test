@@ -28,19 +28,19 @@ const Navigation: FC = () => {
           </div>
         </div>
       ) : null}
-      <div className="">
+      <div className="mt-[10px]">
         <a href="/">
-          <div className="mt-[30px] flex gap-[20px] cursor-pointer">
+          <div className="py-[30px] px-[10px] rounded-[10px] flex gap-[20px] cursor-pointer hover:bg-primaryColor/10">
             <img src="/icons/home.svg" alt="icon" />
-            <p className="flex items-center text-[14px] text-[#6B7280] font-normal">
+            <p className="flex items-center text-[14px] text-[#6B7280] font-semibold">
               Main
             </p>
           </div>
         </a>
         <a href="/product">
-          <div className="mt-[30px] flex gap-[20px] cursor-pointer">
+          <div className="py-[30px] px-[10px] rounded-[10px] flex gap-[20px] cursor-pointer hover:bg-primaryColor/10">
             <img src="/icons/home.svg" alt="icon" />
-            <p className="flex items-center text-[14px] text-[#6B7280] font-normal">
+            <p className="flex items-center text-[14px] text-[#6B7280] font-semibold">
               Product
             </p>
           </div>
