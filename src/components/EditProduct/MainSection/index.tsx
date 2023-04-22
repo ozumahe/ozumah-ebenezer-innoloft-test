@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import { setProduct } from "../../../global/redux/product";
 import { Editor } from "react-draft-wysiwyg";
 import { ContentState, EditorState, convertFromHTML } from "draft-js";
+import { convertToHTML } from "draft-convert";
+
+import { SpinnerCircular } from "spinners-react";
 
 type Props = {
   data: ProductType;
@@ -15,6 +18,7 @@ const MainSection: FC<Props> = ({
   data: { type, picture, description, company, user, name },
 }: Props) => {
   const [typeName, setTypeName] = useState<string>("");
+  const [isRequest, setIsRequest] = useState<boolean>(false);
   const dispatch = useDispatch();
   const blocksFromHTML = convertFromHTML(description);
   const state = ContentState.createFromBlockArray(
@@ -36,6 +40,18 @@ const MainSection: FC<Props> = ({
       const resData: any = await editProduct({ type: typeName });
       if (resData) {
         dispatch(setProduct(resData));
+      }
+    } catch (e) {}
+  };
+
+  const handleDescriptionTech = async () => {
+    setIsRequest(true);
+    let html = convertToHTML(editorState.getCurrentContent());
+    try {
+      const resData: any = await editProduct({ description: html });
+      if (resData) {
+        dispatch(setProduct(resData));
+        setIsRequest(false);
       }
     } catch (e) {}
   };
@@ -78,16 +94,39 @@ const MainSection: FC<Props> = ({
             onChange={handleChange}
             className="w-full h-[38px] px-[10px] border-[#D1D5DB] border-[1px] outline-none rounded-md text-[16px] font-semibold text-[#374151]"
           />
-          {/* <p className="text-[14px] font-normal text-[#6B7280] leading-[24px] mt-[15px]">
-            {description}
-          </p> */}
+
           <Editor
             editorState={editorState}
-            // defaultContentState={description}
             onEditorStateChange={setEditorState}
             wrapperClassName="wrapper"
             editorClassName="editor"
           />
+
+          <div className="mt-[30px] flex justify-end gap-[20px]">
+            <button className="relative w-[72px] h-[30px] bg-[#fff] rounded-md flex items-center gap-1 justify-center">
+              <img src="/icons/goodIcon.svg" alt="icon" />
+              <p className="text-[14px] font-normal text-primaryColor">
+                Cancel
+              </p>
+              {isRequest ? (
+                <div className="absolute top-0 left-0 right-0 bottom-0 bg-appBackgroundColor/70 flex justify-center items-center">
+                  <SpinnerCircular color="#272E71" size={30} />
+                </div>
+              ) : null}
+            </button>
+            <button
+              onClick={handleDescriptionTech}
+              className="relative w-[72px] h-[30px] bg-primaryColor rounded-md flex items-center gap-1 justify-center"
+            >
+              <img src="/icons/goodIcon.svg" alt="icon" />
+              <p className="text-[14px] font-normal text-[#FFF]">Save</p>
+              {isRequest ? (
+                <div className="absolute top-0 left-0 right-0 bottom-0 bg-appBackgroundColor/70 flex justify-center items-center">
+                  <SpinnerCircular color="#272E71" size={30} />
+                </div>
+              ) : null}
+            </button>
+          </div>
         </div>
       </div>
       {/* RIGHT */}

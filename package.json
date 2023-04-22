@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@types/dompurify": "^3.0.2",
+    "@types/draft-convert": "^2.1.4",
     "@types/react-draft-wysiwyg": "^1.13.4",
     "tailwindcss": "^3.3.1"
   }
