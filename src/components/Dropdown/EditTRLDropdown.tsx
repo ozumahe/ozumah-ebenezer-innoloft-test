@@ -36,8 +36,11 @@ const EditTRLDropdown: FC<Props> = ({ trl }: Props) => {
     <>
       <div className="dropdown dropdown-top w-full">
         <label tabIndex={0} className="w-full">
-          <div className="relative mt-[10px] flex min-h-[50px] ml-[35px] cursor-pointer lg:mt-[20px] bg-primaryColor rounded-[8px] text-[14px] font-normal text-[#FFF] py-[5px] px-[14px]">
+          <div className="relative mt-[10px] flex items-center justify-between min-h-[50px] ml-[35px] cursor-pointer lg:mt-[20px] bg-primaryColor rounded-[8px] text-[14px] font-normal text-[#FFF] py-[5px] px-[14px]">
             <p>{currentTrl}</p>
+            <div>
+              <img src="/icons/inno_accordion-down-light.svg" alt="icon" />
+            </div>
             {isRequest ? (
               <div className="absolute top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-[#FFF]/50">
                 <SpinnerCircularFixed
