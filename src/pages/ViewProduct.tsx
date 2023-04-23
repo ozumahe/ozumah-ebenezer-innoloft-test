@@ -17,6 +17,7 @@ const ViewProduct: FC = () => {
 
   useEffect(() => {
     dispatch(getProduct());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
