@@ -1,7 +1,7 @@
 import apiCall from "../utils/axois";
 
 const getAppConfiguration = () =>
-  apiCall("GET", `/configuration/${process.env.REACT_APP_ID}/`).then(
+  apiCall("GET", `/configuration/${process.env.REACT_APP_ID || 1}/`).then(
     (res) => res.data
   );
 

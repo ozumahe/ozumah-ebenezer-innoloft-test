@@ -1,8 +1,19 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../global/store";
+import { getAppConfiguration } from "../../global/redux/appConfiguration";
 
 const Header: FC = () => {
+  const dispatch = useDispatch();
+  const { config } = useSelector((state: RootState) => state.appConfiguration);
+
+  useEffect(() => {
+    dispatch(getAppConfiguration());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="w-full bg-primaryColor z-10">
+    <div className={`w-full z-10 bg-[${config.mainColor}]`}>
       <div className="max-w-[1520px] mx-auto h-[54.29px] lg:h-[55px] px-[24px] lg:px-0 flex justify-between items-center">
         <img src="/imgs/logo-white.svg" alt="logo" className="h-[60%]" />
 
