@@ -13,7 +13,7 @@ const Header: FC = () => {
   }, []);
 
   return (
-    <div className={`w-full z-10 bg-[${config.mainColor}]`}>
+    <div className={`w-full z-10 bg-[${config.mainColor || "#272e71"}]`}>
       <div className="max-w-[1520px] mx-auto h-[54.29px] lg:h-[55px] px-[24px] lg:px-0 flex justify-between items-center">
         <img src="/imgs/logo-white.svg" alt="logo" className="h-[60%]" />
 
