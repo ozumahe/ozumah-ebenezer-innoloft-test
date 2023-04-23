@@ -2,7 +2,6 @@ import { FC, useEffect } from "react";
 import { RootState } from "../global/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../global/redux/product";
-import { getAppConfiguration } from "../global/redux/appConfiguration";
 import { SpinnerCircularFixed } from "spinners-react";
 
 import {
@@ -18,7 +17,6 @@ const ViewProduct: FC = () => {
 
   useEffect(() => {
     dispatch(getProduct());
-    dispatch(getAppConfiguration());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
